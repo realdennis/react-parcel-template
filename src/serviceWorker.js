@@ -1,13 +1,4 @@
-// In production, we register a service worker to serve assets from local cache.
-
-// This lets the app load faster on subsequent visits in production, and gives
-// it offline capabilities. However, it also means that developers (and users)
-// will only see deployed updates on the "N+1" visit to a page, since previously
-// cached resources are updated in the background.
-
-// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
-// This link also includes instructions on opting out of this behavior.
-
+// Modified codes from CRA
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -18,23 +9,23 @@ const isLocalhost = Boolean(
     )
 );
 
-export function register(config) {
+export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
+    const publicUrl = new URL('/', window.location);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
-      // serve assets; see https://github.com/facebook/create-react-app/issues/2374
+      // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
       return;
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const swUrl = window.location.href + 'service-worker.js';
 
       if (isLocalhost) {
-        // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config);
+        // This is running on localhost. Lets check if a service worker still exists or not.
+        checkValidServiceWorker(swUrl);
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
@@ -46,13 +37,13 @@ export function register(config) {
         });
       } else {
         // Is not local host. Just register service worker
-        registerValidSW(swUrl, config);
+        registerValidSW(swUrl);
       }
     });
   }
 }
 
-function registerValidSW(swUrl, config) {
+function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
@@ -66,21 +57,11 @@ function registerValidSW(swUrl, config) {
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log('New content is available; please refresh.');
-
-              // Execute callback
-              if (config.onUpdate) {
-                config.onUpdate(registration);
-              }
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log('Content is cached for offline use.');
-
-              // Execute callback
-              if (config.onSuccess) {
-                config.onSuccess(registration);
-              }
             }
           }
         };
@@ -91,7 +72,7 @@ function registerValidSW(swUrl, config) {
     });
 }
 
-function checkValidServiceWorker(swUrl, config) {
+function checkValidServiceWorker(swUrl) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
@@ -108,7 +89,7 @@ function checkValidServiceWorker(swUrl, config) {
         });
       } else {
         // Service worker found. Proceed as normal.
-        registerValidSW(swUrl, config);
+        registerValidSW(swUrl);
       }
     })
     .catch(() => {
@@ -116,12 +97,4 @@ function checkValidServiceWorker(swUrl, config) {
         'No internet connection found. App is running in offline mode.'
       );
     });
-}
-
-export function unregister() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
-      registration.unregister();
-    });
-  }
 }
