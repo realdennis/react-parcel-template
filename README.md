@@ -18,9 +18,6 @@ $ yarn dev
 ```
 $ yarn build // For production
 ```
-## Future work
-
-Migrate serviceworker
 
 ## License
 LICENSE WTFPL © 2018 realdennis
