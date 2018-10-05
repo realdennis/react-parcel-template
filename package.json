@@ -7,7 +7,7 @@
     "dev": "parcel public/index.html",
     "build": "NODE_ENV='production' parcel build public/index.html --public-url ./"
   },
-  "keywords": [],
+  "keywords": ["React","Parcel","template","starter-kit"],
   "author": "realdennis",
   "license": "MIT",
   "dependencies": {
