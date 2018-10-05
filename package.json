@@ -1,0 +1,30 @@
+{
+  "name": "react-parcel-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel public/index.html",
+    "build": "parcel build public/index.html --public-url ./"
+  },
+  "keywords": [],
+  "author": "realdennis",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^3.0.3",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "parcel-bundler": "^1.10.1",
+    "postcss-modules": "^1.4.1",
+    "sass": "^1.14.1"
+  }
+}
