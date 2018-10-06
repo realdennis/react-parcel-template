@@ -1,15 +1,20 @@
 {
   "name": "react-parcel-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic template for react app + parcel",
+  "author": "realdennis",
+  "license": "WTFPL",
   "main": "index.js",
   "scripts": {
     "dev": "parcel public/index.html",
     "build": "NODE_ENV='production' parcel build public/index.html --public-url ./"
   },
-  "keywords": ["React","Parcel","template","starter-kit"],
-  "author": "realdennis",
-  "license": "MIT",
+  "keywords": [
+    "React",
+    "Parcel",
+    "template",
+    "starter-kit"
+  ],
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
